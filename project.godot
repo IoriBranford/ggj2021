@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "",
+"class": "FmodNative",
+"language": "NativeScript",
+"path": "res://addons/fmod/Fmod.gdns"
+} ]
 _global_script_class_icons={
-
+"FmodNative": ""
 }
 
 [application]
@@ -18,6 +23,14 @@ _global_script_class_icons={
 config/name="GodotProject"
 run/main_scene="res://scene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Fmod="*res://addons/fmod/Fmod.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "fmod" )
 
 [rendering]
 
