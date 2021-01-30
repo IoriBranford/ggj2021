@@ -4,7 +4,7 @@ signal timeline_marker
 signal sound_played
 signal sound_stopped
 
-var godot_fmod: FmodNative
+var godot_fmod = FmodNative.new()
 
 ############
 ###UTILS###
@@ -119,18 +119,11 @@ var started := false
 ###SYSTEM###
 ############
 func _init() -> void:
-	godot_fmod = FmodNative.new()
 	godot_fmod.connect("timeline_beat", self, "on_timeline_beat")
 	godot_fmod.connect("timeline_marker", self, "on_timeline_marker")
 	godot_fmod.connect("sound_played", self, "on_sound_played")
 	godot_fmod.connect("sound_stopped", self, "on_sound_stopped")
 	print("Fmod Gdnative interface managed by a GDScript wrapper")
-	
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		if started:
-			shutdown()
-		godot_fmod.free()
 
 func _process(delta):
 	if started:
@@ -138,18 +131,12 @@ func _process(delta):
 
 
 func init(numOfChannels: int, studioFlag: int, fmodFlag: int) -> void:
-	if not started:
-		godot_fmod.init(numOfChannels, studioFlag, fmodFlag)
-		started = true
-	else:
-		print("Fmod already started")
+	godot_fmod.init(numOfChannels, studioFlag, fmodFlag)
+	started = true
 	
 func shutdown() -> void:
-	if started:
-		started = false
-		godot_fmod.shutdown()
-	else:
-		print("Fmod not started, can't shutdown'")
+	started = false
+	godot_fmod.shutdown()
 
 func set_software_format(sampleRate: int, speakerMode: int, numRowSpeakers: int) -> void:
 	godot_fmod.set_software_format(sampleRate, speakerMode, numRowSpeakers)
@@ -201,8 +188,8 @@ func get_global_parameter_desc_list() -> Array:
 ###LISTENERS###
 ###############
 
-func add_listener(index: int, node: Node) -> void:
-	godot_fmod.add_listener(index, node)
+func add_listener(index: int, object: Node) -> void:
+	godot_fmod.add_listener(index, object)
 
 func remove_listener(index: int) -> void:
 	godot_fmod.remove_listener(index)
@@ -237,7 +224,7 @@ func set_listener_lock(index: int, is_locked: bool) -> void:
 func get_listener_lock(index: int) -> bool:
 	return godot_fmod.get_listener_lock(index)
 
-func get_object_attached_to_listener(index: int) -> Node:
+func get_object_attached_to_listener(index: int) -> Object:
 	return godot_fmod.get_object_attached_to_listener(index)
 ##########
 ###BANK###
@@ -270,17 +257,17 @@ func banks_still_loading() -> bool:
 ####################
 ###EVENT_INSTANCE###
 ####################
-func play_one_shot(event_path: String, node: Node) -> void:
-	godot_fmod.play_one_shot(event_path, node)
+func play_one_shot(event_path: String, object) -> void:
+	godot_fmod.play_one_shot(event_path, object)
 
-func play_one_shot_with_params(event_path: String, node: Node, params: Dictionary) -> void:
-	godot_fmod.play_one_shot_with_params(event_path, node, params)
+func play_one_shot_with_params(event_path: String, object, params: Dictionary) -> void:
+	godot_fmod.play_one_shot_with_params(event_path, object, params)
 
-func play_one_shot_attached(event_path: String, node: Node) -> void:
-	godot_fmod.play_one_shot_attached(event_path, node)
+func play_one_shot_attached(event_path: String, object) -> void:
+	godot_fmod.play_one_shot_attached(event_path, object)
 
-func play_one_shot_attached_with_params(event_path: String, node: Node, params: Dictionary) -> void:
-	godot_fmod.play_one_shot_attached_with_params(event_path, node, params)
+func play_one_shot_attached_with_params(event_path: String, object: Object, params: Dictionary) -> void:
+	godot_fmod.play_one_shot_attached_with_params(event_path, object, params)
 
 func create_event_instance(event_path: String) -> int:
 	return godot_fmod.create_event_instance(event_path)
@@ -312,13 +299,13 @@ func get_event_pitch(instanceId: int) -> float:
 func set_event_pitch(instanceId: int, pitch: float) -> void:
 	godot_fmod.set_event_pitch(instanceId, pitch)
 
-func attach_instance_to_node(instanceId: int, node: Node) -> void:
-	godot_fmod.attach_instance_to_node(instanceId, node)
+func attach_instance_to_node(instanceId: int, object: Object) -> void:
+	godot_fmod.attach_instance_to_node(instanceId, object)
 
 func detach_instance_from_node(instanceId: int) -> void:
 	godot_fmod.detach_instance_from_node(instanceId)
 
-func get_object_attached_to_instance(instanceId: int) -> Node:
+func get_object_attached_to_instance(instanceId: int) -> Object:
 	return godot_fmod.get_object_attached_to_instance(instanceId)
 
 func get_event_parameter_by_name(instanceId: int, parameterName: String) -> float:
