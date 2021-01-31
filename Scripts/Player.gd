@@ -1,28 +1,34 @@
 extends KinematicBody2D
 
 export (int) var playerVelocity
-var Movimiento = Vector2()
+var Movement = Vector2()
 var limite
 
 func _ready():
 	limite = get_viewport_rect().size
 
 func _process(delta):
-	Movimiento = Vector2()
+	Movement = Vector2()
 	
 	if Input.is_action_pressed("ui_right"):
-		Movimiento.x += 1
-	if (Input.is_action_pressed("ui_left")):
-		Movimiento.x -= 1
+		Movement.x += 1
+		$AnimatedSprite.flip_h = false;
+	elif (Input.is_action_pressed("ui_left")):
+		Movement.x -= 1
+		$AnimatedSprite.flip_h = true;
 	if Input.is_action_pressed("ui_down"):
-		Movimiento.y += 1
-	if Input.is_action_pressed("ui_up"):
-		Movimiento.y -= 1
-	
-	if Movimiento.length() > 0:
-			Movimiento = Movimiento.normalized() * playerVelocity
+		Movement.y += 1
+	elif Input.is_action_pressed("ui_up"):
+		Movement.y -= 1
+
+	if Movement.length() > 0:
+		Movement = Movement.normalized() * playerVelocity
+		$AnimatedSprite.play("movement")
 		
-	position += Movimiento * delta
+	else:
+		$AnimatedSprite.play("idle")
+		
+	position += Movement * delta
 	position.x = clamp(position.x, 0, limite.x)
 	position.y = clamp(position.y, 0, limite.y)
 	
