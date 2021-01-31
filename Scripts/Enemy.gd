@@ -3,12 +3,15 @@ extends KinematicBody2D
 onready var BulletScene = preload("res://Scenes/Bullet.tscn")
 
 export (int) var speed
-var player = null
+var player : Node2D = null
 var move = Vector2.ZERO
 var canAttack = false
 var canShoot = true
 var canMove = true
 
+func _ready():
+	$Tentacle.visible = false
+	
 func _physics_process(delta):
 	move = Vector2.ZERO
 	
@@ -33,12 +36,13 @@ func Shoot():
 	get_parent().add_child((bullet))
 	
 func _on_Timer_timeout():
-	if player != null and canAttack:
-		print("attack")
-		
-	if player != null and canShoot:
-		Shoot()
-
+	if player != null:
+		if canAttack:
+			var dir = player.global_position - global_position
+			$Tentacle.rotation = dir.angle()
+			$AnimationPlayer.play("TentacleAttack")
+		elif canShoot:
+			Shoot()
 
 func _on_Area2D2_body_entered(body):
 	if body.name == "Player":
