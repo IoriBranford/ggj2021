@@ -8,7 +8,6 @@ var Movement = Vector2()
 var limite
 var spin_radius = 0
 var spin_angle = 0
-#var isLaunched = 0 #1 means launched. 0 means attached to player
 
 func _ready():
 	limite = get_viewport_rect().size
@@ -38,26 +37,6 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept") and ball != null:
 		var speed = 2	#for now just a static value
 		var angle = 0
-#		if Input.is_action_pressed("ui_right"):
-#			angle = 0
-#		elif Input.is_action_pressed("ui_up"):
-#			angle = -90
-#		elif Input.is_action_pressed("ui_down"):
-#			angle = 90
-#		elif Input.is_action_pressed("ui_left"):
-#			angle = 180
-#		elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up")):
-#			angle = -45
-#		elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up")):
-#			angle = -135
-#		elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down")):
-#			angle = 45
-#		elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down")):
-#			angle = 135
-#		else:
-#			pass	#incase incorrect option chosen
-#		isLaunched = 1
-		
 		var ball_position = ball.global_position
 		$Hand.remove_child(ball)
 		get_parent().add_child(ball)
@@ -70,7 +49,6 @@ func _physics_process(delta):
 		ball.throwBall(angle, speed)
 		ball = null
 	
-	#if Input.is_action_pressed("ui_accept") and isLaunched == 0:
 	if Input.is_action_pressed("ui_accept") and ball != null:
 		spin_radius = move_toward(spin_radius, max_spin_radius, spin_radius_growth*delta)
 		spin_angle += spin_speed_deg*delta

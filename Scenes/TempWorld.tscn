@@ -1,51 +1,96 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/Enemy_Fish_guy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/16 x 16 Tileset.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Enemy_Green_Monster.tscn" type="PackedScene" id=4]
 
+[sub_resource type="OccluderPolygon2D" id=25]
+polygon = PoolVector2Array( 15.5541, 15.4487, 0.345688, 15.4487, 0.345688, 0.509396, 15.5541, 0.509396 )
+
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 8.71273, 16, 8.71273, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=22]
+polygon = PoolVector2Array( 16, 16, 6.95808, 16, 6.95808, 7.3169, 16, 7.3169 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 6.79657, 7.57124, 15.5179, 7.40974, 16, 16, 6.79657, 16 )
 
+[sub_resource type="OccluderPolygon2D" id=21]
+polygon = PoolVector2Array( 0.0940971, 6.628, 16, 6.628, 16, 16, 0, 16 )
+
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 6.45166, 15.8409, 6.29015, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=33]
+polygon = PoolVector2Array( 16, 0.342884, 0.122192, 0.342884, 0.122192, 3.70758, 16, 3.70758 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
+[sub_resource type="OccluderPolygon2D" id=34]
+polygon = PoolVector2Array( 16, 0, 0.138161, 0, 0.138161, 4.6497, 16, 4.6497 )
+
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=24]
+polygon = PoolVector2Array( 12.0884, 16, 3.47476, 16, 3.47476, 1.8597, 12.0884, 1.8597 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 3.71701, 1.94046, 12.2768, 1.77895, 12.2768, 16, 3.71701, 16 )
 
+[sub_resource type="OccluderPolygon2D" id=20]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=26]
+polygon = PoolVector2Array( 16, 4.24593, 0, 4.24593, 0.0765228, 0.0737076, 16, 0.0737076 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
+[sub_resource type="OccluderPolygon2D" id=27]
+polygon = PoolVector2Array( 0.243042, 16, 4.95361, 16, 4.95361, 0.224258, 0.243042, 0.224258 )
+
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 5.4388, 0.163895, 5.4388, 15.9914, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=28]
+polygon = PoolVector2Array( 15.926, 16, 11.6192, 15.9711, 11.7537, 0, 15.926, 0.0896721 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 points = PoolVector2Array( 9.52026, 0.00239563, 16, 0, 16, 16, 9.68177, 16 )
 
+[sub_resource type="OccluderPolygon2D" id=29]
+polygon = PoolVector2Array( 15.8888, 15.8228, 0, 16, 0.0073967, 0.21056, 16, 0.21056 )
+
 [sub_resource type="ConvexPolygonShape2D" id=11]
 points = PoolVector2Array( 0, 8.37877, 16, 8.21726, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=30]
+polygon = PoolVector2Array( 16, 15.9574, 0.126019, 15.9574, 0.126019, 0.0759697, 16, 0.0759697 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 0, 8.86328, 16, 8.70178, 16, 16, 0, 16 )
 
+[sub_resource type="OccluderPolygon2D" id=31]
+polygon = PoolVector2Array( 16, 16, 16, 0, 0, 0, 0, 16 )
+
 [sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 4.49168, 0, 4.16866 )
 
+[sub_resource type="OccluderPolygon2D" id=32]
+polygon = PoolVector2Array( 15.7382, 15.8387, 0.395199, 15.8387, 0.395199, 0.361115, 15.7382, 0.361115 )
+
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 4.81469, 0.152939, 4.65319 )
+
+[sub_resource type="OccluderPolygon2D" id=23]
+polygon = PoolVector2Array( 9.93498, 16, 0.37923, 16, 0.37923, 7.72066, 9.93498, 7.72066 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
@@ -58,6 +103,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 0/region = Rect2( 64, 32, 16, 16 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
+0/occluder = SubResource( 25 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -93,6 +139,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 2/region = Rect2( 64, 0, 16, 16 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
+2/occluder = SubResource( 26 )
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -114,6 +161,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 3/region = Rect2( 96, 16, 16, 16 )
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
+3/occluder = SubResource( 27 )
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -135,6 +183,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 4/region = Rect2( 32, 16, 16, 16 )
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
+4/occluder = SubResource( 28 )
 4/navigation_offset = Vector2( 0, 0 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -156,6 +205,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 5/region = Rect2( 48, 48, 16, 16 )
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
+5/occluder = SubResource( 29 )
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -177,6 +227,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 6/region = Rect2( 32, 48, 16, 16 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
+6/occluder = SubResource( 30 )
 6/navigation_offset = Vector2( 0, 0 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -198,6 +249,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 7/region = Rect2( 48, 64, 16, 16 )
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
+7/occluder = SubResource( 31 )
 7/navigation_offset = Vector2( 0, 0 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -219,6 +271,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 8/region = Rect2( 32, 64, 16, 16 )
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
+8/occluder = SubResource( 32 )
 8/navigation_offset = Vector2( 0, 0 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -240,6 +293,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 9/region = Rect2( 16, 48, 16, 16 )
 9/tile_mode = 0
 9/occluder_offset = Vector2( 0, 0 )
+9/occluder = SubResource( 23 )
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -261,6 +315,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 10/region = Rect2( 0, 48, 16, 16 )
 10/tile_mode = 0
 10/occluder_offset = Vector2( 0, 0 )
+10/occluder = SubResource( 22 )
 10/navigation_offset = Vector2( 0, 0 )
 10/shape_offset = Vector2( 0, 0 )
 10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -282,6 +337,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 11/region = Rect2( 0, 32, 16, 16 )
 11/tile_mode = 0
 11/occluder_offset = Vector2( 0, 0 )
+11/occluder = SubResource( 21 )
 11/navigation_offset = Vector2( 0, 0 )
 11/shape_offset = Vector2( 0, 0 )
 11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -303,6 +359,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 12/region = Rect2( 0, 0, 16, 16 )
 12/tile_mode = 0
 12/occluder_offset = Vector2( 0, 0 )
+12/occluder = SubResource( 33 )
 12/navigation_offset = Vector2( 0, 0 )
 12/shape_offset = Vector2( 0, 0 )
 12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -324,6 +381,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 13/region = Rect2( 16, 0, 16, 16 )
 13/tile_mode = 0
 13/occluder_offset = Vector2( 0, 0 )
+13/occluder = SubResource( 34 )
 13/navigation_offset = Vector2( 0, 0 )
 13/shape_offset = Vector2( 0, 0 )
 13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -345,6 +403,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 14/region = Rect2( 16, 16, 16, 16 )
 14/tile_mode = 0
 14/occluder_offset = Vector2( 0, 0 )
+14/occluder = SubResource( 24 )
 14/navigation_offset = Vector2( 0, 0 )
 14/shape_offset = Vector2( 0, 0 )
 14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -366,6 +425,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 15/region = Rect2( 0, 16, 16, 16 )
 15/tile_mode = 0
 15/occluder_offset = Vector2( 0, 0 )
+15/occluder = SubResource( 20 )
 15/navigation_offset = Vector2( 0, 0 )
 15/shape_offset = Vector2( 0, 0 )
 15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -384,6 +444,7 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Floor" type="TileMap" parent="."]
+modulate = Color( 0.658824, 0.627451, 0.627451, 1 )
 tile_set = SubResource( 16 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -394,10 +455,13 @@ scale = Vector2( 2, 2 )
 tile_set = SubResource( 16 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 20, 2, 0, 21, 2, 0, 22, 2, 0, 23, 2, 0, 24, 2, 0, 25, 2, 0, 26, 2, 0, 27, 2, 0, 28, 2, 0, 29, 2, 0, 30, 2, 0, 65539, 3, 0, 65566, 4, 0, 131075, 3, 0, 131102, 4, 0, 196611, 3, 0, 196638, 4, 0, 262147, 3, 0, 262174, 4, 0, 327683, 3, 0, 327690, 15, 0, 327710, 4, 0, 393219, 3, 0, 393246, 4, 0, 458755, 3, 0, 458782, 4, 0, 524291, 3, 0, 524318, 4, 0, 589827, 3, 0, 589834, 15, 0, 589854, 4, 0, 655363, 3, 0, 655390, 4, 0, 720899, 3, 0, 720926, 4, 0, 786435, 3, 0, 786462, 4, 0, 851971, 3, 0, 851978, 15, 0, 851998, 4, 0, 917507, 3, 0, 917534, 4, 0, 983043, 3, 0, 983070, 4, 0, 1048579, 3, 0, 1048606, 4, 0, 1114115, 3, 0, 1114142, 4, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0 )
+tile_data = PoolIntArray( 3, 2, 0, 4, 2, 0, 5, 12, 0, 6, 2, 0, 7, 2, 0, 8, 2, 0, 9, 2, 0, 10, 13, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 16, 2, 0, 17, 13, 0, 18, 2, 0, 19, 2, 0, 20, 2, 0, 21, 2, 0, 22, 2, 0, 23, 2, 0, 24, 13, 0, 25, 2, 0, 26, 2, 0, 27, 2, 0, 28, 12, 0, 29, 2, 0, 30, 2, 0, 65539, 3, 0, 65551, 3, 0, 65554, 4, 0, 65560, 3, 0, 65566, 4, 0, 131075, 3, 0, 131087, 3, 0, 131096, 3, 0, 131102, 4, 0, 196611, 3, 0, 196616, 14, 0, 196620, 4, 0, 196623, 3, 0, 196626, 4, 0, 196632, 3, 0, 196638, 4, 0, 262147, 3, 0, 262156, 4, 0, 262159, 3, 0, 262161, 4, 0, 262162, 6, 0, 262168, 3, 0, 262169, 4, 0, 262170, 2, 0, 262171, 3, 0, 262174, 4, 0, 327683, 3, 0, 327690, 15, 0, 327692, 4, 0, 327695, 5, 0, 327696, 2, 0, 327697, 6, 0, 327704, 5, 0, 327705, 2, 0, 327707, 5, 0, 327708, 2, 0, 327710, 4, 0, 393219, 3, 0, 393228, 4, 0, 393235, 10, 0, 393236, 10, 0, 393237, 10, 0, 393246, 4, 0, 458755, 8, 0, 458756, 2, 0, 458757, 2, 0, 458758, 7, 0, 458759, 8, 0, 458760, 2, 0, 458761, 2, 0, 458762, 2, 0, 458763, 2, 0, 458764, 6, 0, 458770, 10, 0, 458771, 11, 0, 458772, 11, 0, 458773, 11, 0, 458774, 10, 0, 458782, 4, 0, 524291, 3, 0, 524294, 4, 0, 524295, 3, 0, 524307, 10, 0, 524308, 10, 0, 524309, 10, 0, 524318, 4, 0, 589827, 3, 0, 589830, 4, 0, 589831, 3, 0, 589834, 15, 0, 589840, 14, 0, 589854, 4, 0, 655363, 3, 0, 655390, 4, 0, 720899, 3, 0, 720926, 4, 0, 786435, 8, 0, 786436, 2, 0, 786437, 2, 0, 786440, 2, 0, 786441, 2, 0, 786442, 2, 0, 786443, 2, 0, 786444, 7, 0, 786450, 10, 0, 786451, 10, 0, 786452, 10, 0, 786453, 10, 0, 786454, 10, 0, 786455, 10, 0, 786462, 4, 0, 851971, 3, 0, 851978, 15, 0, 851980, 4, 0, 851985, 10, 0, 851986, 11, 0, 851987, 11, 0, 851988, 11, 0, 851989, 11, 0, 851990, 11, 0, 851991, 11, 0, 851992, 10, 0, 851998, 4, 0, 917507, 3, 0, 917516, 4, 0, 917522, 10, 0, 917523, 10, 0, 917524, 10, 0, 917525, 10, 0, 917526, 10, 0, 917527, 10, 0, 917534, 4, 0, 983043, 3, 0, 983052, 4, 0, 983056, 3, 0, 983070, 4, 0, 1048579, 3, 0, 1048583, 14, 0, 1048588, 4, 0, 1048592, 3, 0, 1048606, 4, 0, 1114115, 3, 0, 1114124, 4, 0, 1114128, 3, 0, 1114142, 4, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Walls"]
+color = Color( 0.831373, 0.552941, 0.552941, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 158.372, 112.239 )
@@ -406,4 +470,4 @@ position = Vector2( 158.372, 112.239 )
 position = Vector2( 743.295, 287.288 )
 
 [node name="Stationary Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 407.64, 516.957 )
+position = Vector2( 408.829, 515.768 )

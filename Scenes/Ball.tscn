@@ -42,15 +42,15 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Light2D_Radiation" type="Light2D" parent="."]
-position = Vector2( 1.7278, -3.53667 )
-scale = Vector2( 0.0804225, 0.0778153 )
+scale = Vector2( 0.193088, 0.186829 )
 texture = ExtResource( 3 )
 color = Color( 0.905882, 0.305882, 0.305882, 1 )
+shadow_enabled = true
 
 [node name="LightBulb" type="Sprite" parent="Light2D_Radiation"]
+visible = false
 material = SubResource( 2 )
-position = Vector2( -14.3521, 38.229 )
-scale = Vector2( 4.40462, 4.8828 )
+scale = Vector2( 10.4366, 11.5696 )
 texture = ExtResource( 4 )
 
 [node name="Ball" type="AnimatedSprite" parent="."]
