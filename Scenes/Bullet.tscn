@@ -1,21 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.0733, 32.8359 )
+extents = Vector2( 4.93755, 5.59149 )
 
-[node name="Player" type="KinematicBody2D"]
-position = Vector2( 99.6286, 56.5509 )
-scale = Vector2( 1.0011, 1.01029 )
+[node name="Area2D" type="Area2D"]
 script = ExtResource( 2 )
-playerVelocity = 70
+speed = 10
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.77772, 0.816587 )
+position = Vector2( -0.37458, 0.187294 )
+scale = Vector2( 0.192319, 0.209877 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.44091, 0.81658 )
+position = Vector2( -0.236235, 0 )
 shape = SubResource( 1 )
