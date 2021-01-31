@@ -41,9 +41,9 @@ func throwBall(angle, speed):
 #	print("ballVelocity y-axis", ballVelocity.y)
 
 func _physics_process(delta):
-	print("position = ", position)
-	print("ballVelocity.x = ", ballVelocity.x)
-	print("ballVelocity.y = ", ballVelocity.y)
-	position += ballVelocity
+#	print("position = ", position)
+#	print("ballVelocity.x = ", ballVelocity.x)
+#	print("ballVelocity.y = ", ballVelocity.y)
+	position += ballVelocity*delta
 #	throwBall(angle,speed)
 #	ballVelocity = move_and_slide(ballVelocity)

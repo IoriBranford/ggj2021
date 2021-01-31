@@ -8,7 +8,7 @@ var Movement = Vector2()
 var limite
 var spin_radius = 0
 var spin_angle = 0
-var isLaunched = 0 #1 means launched. 0 means attached to player
+#var isLaunched = 0 #1 means launched. 0 means attached to player
 
 func _ready():
 	limite = get_viewport_rect().size
@@ -38,31 +38,37 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept") and ball != null:
 		var speed = 2	#for now just a static value
 		var angle = 0
-		if Input.is_action_pressed("ui_right"):
-			angle = 0
-		elif Input.is_action_pressed("ui_up"):
-			angle = -90
-		elif Input.is_action_pressed("ui_down"):
-			angle = 90
-		elif Input.is_action_pressed("ui_left"):
-			angle = 180
-		elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up")):
-			angle = -45
-		elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up")):
-			angle = -135
-		elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down")):
-			angle = 45
-		elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down")):
-			angle = 135
-		else:
-			pass	#incase incorrect option chosen
-		isLaunched = 1
+#		if Input.is_action_pressed("ui_right"):
+#			angle = 0
+#		elif Input.is_action_pressed("ui_up"):
+#			angle = -90
+#		elif Input.is_action_pressed("ui_down"):
+#			angle = 90
+#		elif Input.is_action_pressed("ui_left"):
+#			angle = 180
+#		elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up")):
+#			angle = -45
+#		elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up")):
+#			angle = -135
+#		elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down")):
+#			angle = 45
+#		elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down")):
+#			angle = 135
+#		else:
+#			pass	#incase incorrect option chosen
+#		isLaunched = 1
 		
+		var ball_position = ball.global_position
 		$Hand.remove_child(ball)
 		get_parent().add_child(ball)
-		ball.position = Vector2.ZERO
-		ball.global_position = $Hand.global_position
-		ball.throwBall(angle,speed)
+		ball.global_position = ball_position
+		if spin_speed_deg < 0:
+			angle = spin_angle - 90
+		else:
+			angle = spin_angle + 90
+		speed = abs(deg2rad(spin_speed_deg)) * spin_radius
+		ball.throwBall(angle, speed)
+		ball = null
 	
 	#if Input.is_action_pressed("ui_accept") and isLaunched == 0:
 	if Input.is_action_pressed("ui_accept") and ball != null:
