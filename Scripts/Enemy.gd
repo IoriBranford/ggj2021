@@ -27,7 +27,8 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Area2D_body_exited(body):
-	player = null
+	if body.name == "Player":
+		player = null
 
 func Shoot():
 	var bullet = BulletScene.instance()
@@ -51,6 +52,7 @@ func _on_Area2D2_body_entered(body):
 
 
 func _on_Area2D2_body_exited(body):
-	canAttack = false
-	print("out of range to attack")
+	if body.name == "Player":
+		canAttack = false
+		print("out of range to attack")
 	
