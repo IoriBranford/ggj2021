@@ -1,32 +1,55 @@
 extends KinematicBody2D
 
 export (int) var playerVelocity
+export var max_spin_radius = 32
+export var spin_radius_growth = 16
+export var spin_speed_deg = -900
 var Movement = Vector2()
 var limite
+var spin_radius = 0
+var spin_angle = 0
 
 func _ready():
 	limite = get_viewport_rect().size
 
-func _process(delta):
+func _physics_process(delta):
 	Movement = Vector2()
 	
 	if Input.is_action_pressed("ui_right"):
 		Movement.x += 1
-		$AnimatedSprite.flip_h = false;
+		scale.x = 1
 	elif (Input.is_action_pressed("ui_left")):
 		Movement.x -= 1
-		$AnimatedSprite.flip_h = true;
+		scale.x = -1
 	if Input.is_action_pressed("ui_down"):
 		Movement.y += 1
 	elif Input.is_action_pressed("ui_up"):
 		Movement.y -= 1
 
-	if Movement.length() > 0:
+	var animation = $AnimatedSprite.animation
+	
+	if Movement.length_squared() > 0:
 		Movement = Movement.normalized() * playerVelocity
-		$AnimatedSprite.play("movement")
-		
+		animation = "movement"
 	else:
-		$AnimatedSprite.play("idle")
+		animation = "idle"
+	
+	if Input.is_action_pressed("ui_accept"):
+		spin_radius = move_toward(spin_radius, max_spin_radius, spin_radius_growth*delta)
+		spin_angle += spin_speed_deg*delta
+		animation += "_swing"
+	else:
+		spin_radius = 0
+		spin_angle = 0
+	$Hand/Ball.position.x = spin_radius * cos(deg2rad(spin_angle))
+	$Hand/Ball.position.y = spin_radius * sin(deg2rad(spin_angle))
+	for i in range(1, 9):
+		var chainlink = find_node("chainlink%d" % i)
+		var radius = spin_radius * i / 9
+		chainlink.position.x = radius * cos(deg2rad(spin_angle))
+		chainlink.position.y = radius * sin(deg2rad(spin_angle))
+	
+	$AnimatedSprite.play(animation)
 		
 	position += Movement * delta
 	position.x = clamp(position.x, 0, limite.x)

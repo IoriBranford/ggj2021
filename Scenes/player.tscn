@@ -1,111 +1,125 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/chainlink.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/player.png" type="Texture" id=5]
 
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 48, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 48, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 48, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 48, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 96, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 96, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 96, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 96, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 48 )
+
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 48 )
 
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 48 )
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 96, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 32, 96, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 64, 96, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 96, 96, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 48, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 32, 48, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 64, 48, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 96, 48, 32, 48 )
-
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "movement",
+"name": "idle_swing",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "movement_swing",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "idle_swing",
+"name": "movement",
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 16.26, 23.3816 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 99.6286, 56.5509 )
-scale = Vector2( 1.0011, 1.01029 )
 script = ExtResource( 1 )
 playerVelocity = 70
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1.77772, 0.816587 )
-frames = SubResource( 9 )
+frames = SubResource( 14 )
 animation = "movement_swing"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.44091, 1.5581 )
-shape = SubResource( 10 )
+shape = SubResource( 15 )
+
+[node name="Hand" type="Node2D" parent="."]
+position = Vector2( -10, -4 )
+
+[node name="chainlink1" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink2" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink3" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink4" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink5" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink6" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink7" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="chainlink8" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+
+[node name="Ball" parent="Hand" instance=ExtResource( 2 )]

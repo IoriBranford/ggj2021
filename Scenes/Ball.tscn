@@ -1,29 +1,49 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Ball_KB2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/ball.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/neonballanimated.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/light.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/spot.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 977.275
+radius = 8.0
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
-[node name="Ball" type="Sprite"]
-scale = Vector2( 0.02, 0.02 )
-texture = ExtResource( 2 )
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Light2D_Radiation" type="Light2D" parent="."]
-position = Vector2( 172.78, -353.667 )
-scale = Vector2( 8.04225, 7.78153 )
+position = Vector2( 1.7278, -3.53667 )
+scale = Vector2( 0.0804225, 0.0778153 )
 texture = ExtResource( 3 )
 color = Color( 0.905882, 0.305882, 0.305882, 1 )
 
@@ -32,3 +52,8 @@ material = SubResource( 2 )
 position = Vector2( -14.3521, 38.229 )
 scale = Vector2( 4.40462, 4.8828 )
 texture = ExtResource( 4 )
+
+[node name="Ball" type="AnimatedSprite" parent="."]
+frames = SubResource( 7 )
+frame = 2
+playing = true
