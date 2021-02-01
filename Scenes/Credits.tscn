@@ -8,6 +8,7 @@
 font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 1.88776, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
