@@ -15,3 +15,7 @@ func _physics_process(delta):
 	move = move.normalized() * speed
 	position += move
 	
+
+
+func _on_Timer_timeout():
+	queue_free()
