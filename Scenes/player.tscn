@@ -91,6 +91,7 @@ playerVelocity = 70
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 14 )
 animation = "movement_swing"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -124,3 +125,13 @@ texture = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="Ball" parent="Hand" instance=ExtResource( 2 )]
+
+[node name="Footsteps" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
+
+[node name="Swing" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
+[connection signal="timeout" from="Footsteps" to="." method="_on_Footsteps_timeout"]
+[connection signal="timeout" from="Swing" to="." method="_on_Swing_timeout"]

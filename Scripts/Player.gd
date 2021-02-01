@@ -14,16 +14,19 @@ var spin_instance = 0
 
 func _ready():
 	limite = get_viewport_rect().size
-	footsteps_instance = Fmod.create_event_instance("event:/Player/FootstepsLoop")
-	spin_instance = Fmod.create_event_instance("event:/Weapon/SwingLoop")
+	
+	#footsteps_instance = Fmod.create_event_instance("event:/Player/FootstepsLoop")
+	#spin_instance = Fmod.create_event_instance("event:/Weapon/SwingLoop")
 
 func _exit_tree():
-	if footsteps_instance != 0:
-		Fmod.release_event(footsteps_instance)
-	if spin_instance != 0:
-		Fmod.release_event(spin_instance)
+	#if footsteps_instance != 0:
+		#Fmod.release_event(footsteps_instance)
+	#if spin_instance != 0:
+		#Fmod.release_event(spin_instance)
+	pass
 
 func _physics_process(delta):
+	
 	Movement = Vector2()
 	var ball = get_node("Hand/Ball") if has_node("Hand/Ball") else null
 	if Input.is_action_pressed("ui_right"):
@@ -46,12 +49,12 @@ func _physics_process(delta):
 	if Movement.length_squared() > 0:
 		Movement = Movement.normalized() * playerVelocity
 		animation = "movement"
-		if footsteps_instance != 0:
-			Fmod.start_event(footsteps_instance)
+		#if footsteps_instance != 0:
+			#Fmod.start_event(footsteps_instance)
 	else:
 		animation = "idle"
-		if footsteps_instance != 0:
-			Fmod.stop_event(footsteps_instance, Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+		#if footsteps_instance != 0:
+			#Fmod.stop_event(footsteps_instance, Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	
 	if Input.is_action_just_released("ui_accept"):
 		print(ball)
@@ -77,13 +80,13 @@ func _physics_process(delta):
 		animation += "_swing"
 		ball.position.x = spin_radius * cos(deg2rad(spin_angle))
 		ball.position.y = spin_radius * sin(deg2rad(spin_angle))
-		if spin_instance != 0:
-			Fmod.start_event(spin_instance)
+		#if spin_instance != 0:
+			#Fmod.start_event(spin_instance)
 	else:
 		spin_radius = 0
 		spin_angle = 0
-		if spin_instance != 0:
-			Fmod.stop_event(spin_instance, Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+		#if spin_instance != 0:
+			#Fmod.stop_event(spin_instance, Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	
 	for i in range(1, 9):
 		var chainlink = find_node("chainlink%d" % i)
@@ -99,3 +102,15 @@ func _physics_process(delta):
 		if object.has_method("pick_up"):
 			object.call("pick_up", $Hand)
 			continue
+
+
+func _on_Footsteps_timeout():
+	if Movement != Vector2.ZERO:
+		Fmod.play_one_shot("event:/Player/FootstepsLoop", self)
+		$Footsteps.start(1.6)
+
+
+func _on_Swing_timeout():
+	if Input.is_action_pressed("ui_accept"):
+		Fmod.play_one_shot("event:/Weapon/SwingLoop", self)
+		$Swing.start(2.6)
