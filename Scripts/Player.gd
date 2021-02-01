@@ -26,6 +26,11 @@ func _exit_tree():
 	pass
 
 func _physics_process(delta):
+	if not visible:
+		if Input.is_action_just_released("ui_accept"):
+			get_tree().change_scene("res://Scenes/MainMenu.tscn")
+			Fmod.stop_all_bus_events("bus:/", Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+		return
 	
 	Movement = Vector2()
 	var ball = get_node("Hand/Ball") if has_node("Hand/Ball") else null
@@ -104,7 +109,7 @@ func _physics_process(delta):
 			continue
 		if object is PhysicsBody2D and object.collision_layer == 8:
 			Fmod.play_one_shot("event:/Player/TakeDamage", self)
-			queue_free()
+			visible = false
 
 
 func _on_Footsteps_timeout():
