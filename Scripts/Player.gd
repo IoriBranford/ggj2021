@@ -98,10 +98,13 @@ func _physics_process(delta):
 	move_and_slide(Movement)
 	for i in range(0, get_slide_count()):
 		var collision = get_slide_collision(i)
-		var object:Node2D = collision.collider
+		var object = collision.collider
 		if object.has_method("pick_up"):
 			object.call("pick_up", $Hand)
 			continue
+		if object is PhysicsBody2D and object.collision_layer == 8:
+			Fmod.play_one_shot("event:/Player/TakeDamage", self)
+			queue_free()
 
 
 func _on_Footsteps_timeout():

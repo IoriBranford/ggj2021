@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Enemy_Fish_guy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/16 x 16 Tileset.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Enemy_Green_Monster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/1280 x 720 Starfield.png" type="Texture" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 15.5541, 15.4487, 0.345688, 15.4487, 0.345688, 0.509396, 15.5541, 0.509396 )
@@ -442,6 +443,10 @@ points = PoolVector2Array( 0, 7.57124, 8.72369, 7.57124, 8.56218, 16, 0, 16 )
 15/z_index = 0
 
 [node name="Node2D" type="Node2D"]
+
+[node name="1280 x 720 Starfield" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
 
 [node name="Floor" type="TileMap" parent="."]
 modulate = Color( 0.658824, 0.627451, 0.627451, 1 )

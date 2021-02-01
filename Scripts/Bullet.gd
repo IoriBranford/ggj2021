@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 export (int) var speed
 var move = Vector2.ZERO
@@ -13,7 +13,8 @@ func _physics_process(delta):
 	
 	move = move.move_toward(lookVec, delta)
 	move = move.normalized() * speed
-	position += move
+	if move_and_collide(move):
+		queue_free()
 	
 
 

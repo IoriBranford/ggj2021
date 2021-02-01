@@ -61,6 +61,8 @@ tracks/1/keys = {
 }
 
 [node name="Stationary Enemy" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 BulletScene = ExtResource( 5 )
 

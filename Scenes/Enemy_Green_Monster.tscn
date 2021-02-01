@@ -34,6 +34,8 @@ extents = Vector2( 333.721, 346.898 )
 extents = Vector2( 838.651, 529.157 )
 
 [node name="Tentacle Enemy" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 BulletScene = ExtResource( 5 )
 
