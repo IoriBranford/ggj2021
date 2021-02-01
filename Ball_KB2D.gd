@@ -10,7 +10,7 @@ extends KinematicBody2D
 # If detached, then I need just ball position.
 # And then, when throwBall is called, the ballPosition is updated.
 var ballVelocity = Vector2()
-var isLaunched = 0;
+var isLaunched = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -32,7 +32,7 @@ func throwBall(angle, speed):
 	#speed is a number
 	#print("Angle = ",angle)
 	#print("Speed = ",speed)
-	isLaunched = 1
+	isLaunched = true
 	angle = deg2rad(angle)
 	ballVelocity.x = cos(angle) * speed
 	ballVelocity.y = sin(angle) * speed
@@ -47,13 +47,14 @@ func _physics_process(delta):
 #	if isLaunched == 1:
 	move_and_slide(ballVelocity)
 	
-	for i in range(0, get_slide_count()):
-		var collision = get_slide_collision(i)
-		ballVelocity = ballVelocity.reflect(collision.normal)
-		var collider:Node2D = collision.collider
-		if collider:
-			if collider.get("name") != "Player":
-				collision_mask |= 2
+	if isLaunched:
+		for i in range(0, get_slide_count()):
+			var collision = get_slide_collision(i)
+			ballVelocity = ballVelocity.reflect(collision.normal)
+			var collider:Node2D = collision.collider
+			if collider:
+				if collider.get("name") != "Player":
+					collision_mask |= 2
 
 #	throwBall(angle,speed)
 #	ballVelocity = move_and_slide(ballVelocity)
@@ -66,3 +67,4 @@ func pick_up(hand:Node2D):
 	hand.add_child(self)
 	position = Vector2.ZERO
 	ballVelocity = Vector2.ZERO
+	isLaunched = false
