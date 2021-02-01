@@ -38,6 +38,7 @@ func throwBall(angle, speed):
 	ballVelocity.y = sin(angle) * speed
 #	print("ballVelocity x-axis", ballVelocity.x)
 #	print("ballVelocity y-axis", ballVelocity.y)
+	Fmod.play_one_shot("event:/Weapon/ShootBall", self)
 
 func _physics_process(delta):
 #	print("position = ", position)

@@ -9,8 +9,19 @@ var limite
 var spin_radius = 0
 var spin_angle = 0
 
+var footsteps_instance = 0
+var spin_instance = 0
+
 func _ready():
 	limite = get_viewport_rect().size
+	footsteps_instance = Fmod.create_event_instance("event:/Player/FootstepsLoop")
+	spin_instance = Fmod.create_event_instance("event:/Weapon/SwingLoop")
+
+func _exit_tree():
+	if footsteps_instance != 0:
+		Fmod.release_event(footsteps_instance)
+	if spin_instance != 0:
+		Fmod.release_event(spin_instance)
 
 func _physics_process(delta):
 	Movement = Vector2()
@@ -35,8 +46,12 @@ func _physics_process(delta):
 	if Movement.length_squared() > 0:
 		Movement = Movement.normalized() * playerVelocity
 		animation = "movement"
+		if footsteps_instance != 0:
+			Fmod.start_event(footsteps_instance)
 	else:
 		animation = "idle"
+		if footsteps_instance != 0:
+			Fmod.stop_event(footsteps_instance, Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	
 	if Input.is_action_just_released("ui_accept"):
 		print(ball)
@@ -62,9 +77,13 @@ func _physics_process(delta):
 		animation += "_swing"
 		ball.position.x = spin_radius * cos(deg2rad(spin_angle))
 		ball.position.y = spin_radius * sin(deg2rad(spin_angle))
+		if spin_instance != 0:
+			Fmod.start_event(spin_instance)
 	else:
 		spin_radius = 0
 		spin_angle = 0
+		if spin_instance != 0:
+			Fmod.stop_event(spin_instance, Fmod.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	
 	for i in range(1, 9):
 		var chainlink = find_node("chainlink%d" % i)

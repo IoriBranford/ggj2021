@@ -17,6 +17,7 @@ func Shoot():
 	bullet.position = get_global_position()
 	bullet.player = player
 	get_parent().add_child((bullet))
+	Fmod.play_one_shot("event:/Enemy/Projectile", bullet)
 
 func _physics_process(delta):
 	move = Vector2.ZERO
@@ -37,6 +38,8 @@ func _physics_process(delta):
 					canMove = false
 					canShoot = false
 					BulletScene = null
+					Fmod.play_one_shot("event:/Enemy/TakeDamage", self)
+					Fmod.play_one_shot("event:/Enemy/Die", self)
 	
 	if squashed:
 		$AnimatedSprite.scale.x += squash_speed*delta
