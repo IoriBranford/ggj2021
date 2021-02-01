@@ -11,35 +11,35 @@ region = Rect2( 32, 0, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 32, 48 )
+region = Rect2( 0, 96, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 32, 48 )
+region = Rect2( 32, 96, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 32, 48 )
+region = Rect2( 64, 96, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 32, 48 )
+region = Rect2( 96, 96, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 96, 32, 48 )
+region = Rect2( 0, 0, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 5 )
-region = Rect2( 32, 96, 32, 48 )
+region = Rect2( 32, 0, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 5 )
-region = Rect2( 64, 96, 32, 48 )
+region = Rect2( 64, 0, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 5 )
-region = Rect2( 96, 96, 32, 48 )
+region = Rect2( 96, 0, 32, 48 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 5 )
@@ -66,12 +66,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "movement",
+"name": "movement_swing",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
-"name": "movement_swing",
+"name": "movement",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
@@ -91,6 +91,7 @@ playerVelocity = 70
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 14 )
 animation = "movement_swing"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
