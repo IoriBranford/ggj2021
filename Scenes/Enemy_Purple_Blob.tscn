@@ -12,14 +12,14 @@ animations = [ {
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Damage",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Movement",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Damage",
 "speed": 5.0
 } ]
 
@@ -76,6 +76,8 @@ shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
@@ -85,6 +87,8 @@ autostart = true
 
 [node name="Area2D2" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 4 )

@@ -13,9 +13,7 @@ var ballVelocity = Vector2()
 var isLaunched = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#ball.position = Player.position
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -46,8 +44,25 @@ func _physics_process(delta):
 #	print("ballVelocity.x = ", ballVelocity.x)
 #	print("ballVelocity.y = ", ballVelocity.y)
 	#position += ballVelocity*delta
-	if isLaunched == 1:
-		move_and_collide(ballVelocity*delta)
+#	if isLaunched == 1:
+	move_and_slide(ballVelocity)
 	
+	for i in range(0, get_slide_count()):
+		var collision = get_slide_collision(i)
+		ballVelocity = ballVelocity.reflect(collision.normal)
+		var collider:Node2D = collision.collider
+		if collider:
+			if collider.get("name") != "Player":
+				collision_mask |= 2
+
 #	throwBall(angle,speed)
 #	ballVelocity = move_and_slide(ballVelocity)
+
+func pick_up(hand:Node2D):
+	if get_parent() == hand:
+		return
+	collision_mask &= ~2
+	get_parent().remove_child(self)
+	hand.add_child(self)
+	position = Vector2.ZERO
+	ballVelocity = Vector2.ZERO
